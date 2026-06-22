@@ -648,8 +648,10 @@
 
   async function fetchSanity() {
     const q = encodeURIComponent('*[_type=="siteContent"][0]');
-    const url = 'https://' + SANITY.projectId + '.apicdn.sanity.io/v2021-10-21/data/query/' + SANITY.dataset + '?query=' + q;
-    const r = await fetch(url); if (!r.ok) throw new Error('sanity ' + r.status);
+    // Uncached host (api, not apicdn) + no-store so a publish shows on the next load instead of
+    // after a cache window. Traffic is low; the skeleton covers the small latency cost.
+    const url = 'https://' + SANITY.projectId + '.api.sanity.io/v2021-10-21/data/query/' + SANITY.dataset + '?query=' + q;
+    const r = await fetch(url, { cache: 'no-store' }); if (!r.ok) throw new Error('sanity ' + r.status);
     const j = await r.json(); if (!j.result) throw new Error('no content'); return j.result;
   }
   // Skeletons while content loads. The baked HTML is the static fallback: we stash it,
