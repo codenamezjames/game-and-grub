@@ -15,6 +15,7 @@ export default defineType({
         { name: 'addressLine1', title: 'Street address', type: 'string' },
         { name: 'addressLine2', title: 'City line (e.g. Navy Point, Pensacola, FL)', type: 'string' },
         { name: 'phone', title: 'Phone (e.g. (850) 287-9430)', type: 'string' },
+        { name: 'rate', title: 'Gaming rate (e.g. $20)', type: 'string' },
       ],
     }),
     defineField({

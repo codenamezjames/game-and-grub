@@ -16,7 +16,7 @@
 <link rel="preload" href="fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/vt323.woff2" as="font" type="font/woff2" crossorigin>
 
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
@@ -305,7 +305,7 @@
         <ul>
           <li><b>9</b> GAMING STATIONS</li>
           <li><b>~85</b> BOARD GAMES</li>
-          <li><b>$20</b> PER HOUR</li>
+          <li><b id="rateHud">$20</b> PER HOUR</li>
           <li><b>1-6</b> PLAYERS EACH</li>
           <li><b>FULL</b> THEMED BAR + KITCHEN</li>
         </ul>
@@ -318,7 +318,7 @@
   <div class="wrap play-grid">
     <div class="reveal">
       <h2>PLAY</h2>
-      <p class="price-big"><span>$20</span> / HOUR &middot; 1-6 PLAYERS</p>
+      <p class="price-big"><span id="ratePlay">$20</span> / HOUR &middot; 1-6 PLAYERS</p>
       <ul class="play-list">
         <li><b>CONSOLES</b>PS5, Xbox One and Switch on comfy couches, plus a retro Atari.</li>
         <li><b>GAMING PCS</b>Three rigs for the keyboard-and-mouse crowd.</li>
@@ -511,7 +511,7 @@
   <div class="wrap">
     <p class="eyebrow">BOOK</p>
     <h2>GRAB A STATION</h2>
-    <p>Round up a group and pick your hours. $20/hour, seats 1-6. Parties welcome.</p>
+    <p>Round up a group and pick your hours. <span id="rateBook">$20</span>/hour, seats 1-6. Parties welcome.</p>
     <p class="coin" aria-hidden="true">&#9679;</p>
     <p style="margin-top:1rem">
       <!-- ponytail: v1 booking = phone / Instagram DM, not a custom reservation system.
@@ -593,6 +593,22 @@
       const fa = document.getElementById('footAddr');
       if (fa) fa.innerHTML = esc(s.addressLine1) + ', ' + esc(s.addressLine2) + ' &middot; ' + esc(s.phone);
     }
+    if (s.rate) ['rateHud', 'ratePlay', 'rateBook'].forEach((id) => { const e = document.getElementById(id); if (e) e.textContent = s.rate; });
+  }
+
+  // Keep the SEO structured data (Google/Maps) in sync with the live hours + contact info.
+  function updateSEO(data) {
+    const ld = document.getElementById('ld'); if (!ld || !data) return;
+    const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const spec = (data.hours || []).filter((h) => h.open && h.close).map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: names[h.day], opens: h.open, closes: h.close }));
+    const s = data.site || {};
+    const j = {
+      '@context': 'https://schema.org', '@type': 'Restaurant', name: 'Games and Grub', servesCuisine: 'American comfort food',
+      address: { '@type': 'PostalAddress', streetAddress: s.addressLine1 || '1000 Gulf Beach Hwy', addressLocality: 'Pensacola', addressRegion: 'FL', addressCountry: 'US' },
+      openingHoursSpecification: spec,
+    };
+    if (s.phone) j.telephone = s.phone;
+    ld.textContent = JSON.stringify(j);
   }
   function renderHours(hours) {
     // Fallback safety: if no real open/close times are present (Sanity down), never assert
@@ -705,6 +721,7 @@
         renderSpecials(data.specials, data.familyNote);
         renderPackages(data.packagesNote, data.packages);
         renderMenu(data.menu, data.menuFoot);
+        updateSEO(data);
       } catch (e) { console.error('render failed, showing fallback content', e); restoreBaked(); }
     } else {
       restoreBaked();  // nothing loaded at all -> reveal the static fallback content

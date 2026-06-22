@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>404 — Games and Grub</title>
+<style>
+  @font-face { font-family: 'Press Start 2P'; src: url(/fonts/press-start-2p.woff2) format('woff2'); font-display: block; }
+  @font-face { font-family: 'VT323'; src: url(/fonts/vt323.woff2) format('woff2'); font-display: block; }
+  :root {
+    --navy: oklch(0.25 0.05 258); --cream: oklch(0.93 0.035 88); --gold: oklch(0.76 0.13 68);
+    --tomato: oklch(0.64 0.20 30); --ink: oklch(0.16 0.035 258); --muted: oklch(0.80 0.03 80);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'VT323', monospace; background: var(--navy); color: var(--cream);
+    min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 1.5rem; font-size: 1.5rem;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, var(--cream) 50%, transparent 51%),
+      radial-gradient(2px 2px at 80% 20%, var(--cream) 50%, transparent 51%),
+      radial-gradient(2px 2px at 65% 75%, var(--cream) 50%, transparent 51%),
+      radial-gradient(2px 2px at 35% 60%, var(--cream) 50%, transparent 51%);
+    background-repeat: no-repeat; }
+  h1 { font-family: 'Press Start 2P'; color: var(--tomato); font-size: clamp(1.6rem, 8vw, 3rem); line-height: 1.3; margin-bottom: 1.2rem; text-shadow: 4px 4px 0 var(--ink); }
+  .sub { font-family: 'Press Start 2P'; font-size: .7rem; color: var(--gold); margin-bottom: 2rem; animation: blink 1s steps(1) infinite; }
+  .msg { margin-bottom: 2rem; color: var(--muted); }
+  a.btn { font-family: 'Press Start 2P'; font-size: .7rem; text-decoration: none; display: inline-block;
+    padding: .9rem 1.2rem; border: 3px solid var(--ink); background: var(--gold); color: var(--ink);
+    box-shadow: 6px 6px 0 oklch(0.10 0.03 258 / .5); transition: transform .06s steps(2), box-shadow .06s steps(2); }
+  a.btn:hover { background: var(--tomato); color: var(--cream); }
+  a.btn:active { transform: translate(6px, 6px); box-shadow: 0 0 0 var(--ink); }
+  @keyframes blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+  @media (prefers-reduced-motion: reduce) { .sub { animation: none; } }
+</style>
+</head>
+<body>
+  <div>
+    <h1>GAME OVER</h1>
+    <p class="sub">ERROR 404 &middot; INSERT COIN</p>
+    <p class="msg">This page took a wrong warp pipe.<br>Let's get you back to the action.</p>
+    <a class="btn" href="/">&#9654; CONTINUE</a>
+  </div>
+</body>
+</html>
