@@ -242,6 +242,12 @@
   .badge.open { animation: blink 1.4s steps(1) infinite; }
   .scan { animation: flick 4s steps(2) infinite; }
   .coin { animation: bob 1.2s steps(4) infinite; }
+
+  /* loading skeletons (shown while content fetches; static fallback is restored only if fetch fails) */
+  .skel { background: var(--navy-deep); border: 3px solid var(--ink); box-shadow: var(--shadow);
+    margin-bottom: 1.2rem; break-inside: avoid; animation: skelpulse 1s steps(2) infinite; }
+  .skel-text { display: inline-block; height: 1em; width: 16ch; vertical-align: middle; margin: 0; box-shadow: none; border-width: 2px; }
+  @keyframes skelpulse { 0%, 100% { opacity: .4 } 50% { opacity: .75 } }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .5s ease-out, transform .5s cubic-bezier(.22,1,.36,1); }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { *, .scan { animation: none !important; } .reveal { opacity: 1; transform: none; transition: none; } }
@@ -646,11 +652,32 @@
     const r = await fetch(url); if (!r.ok) throw new Error('sanity ' + r.status);
     const j = await r.json(); if (!j.result) throw new Error('no content'); return j.result;
   }
+  // Skeletons while content loads. The baked HTML is the static fallback: we stash it,
+  // swap in skeletons, and only restore it if every fetch fails.
+  const SKEL_IDS = ['heroPlace', 'heroTag', 'hours', 'daysList', 'pkgNote', 'pkgs', 'cats'];
+  const baked = {};
+  const repeat = (n, html) => Array(n).fill(html).join('');
+  function showSkeletons() {
+    SKEL_IDS.forEach((id) => { const e = document.getElementById(id); if (e) baked[id] = e.innerHTML; });
+    const set = (id, html) => { const e = document.getElementById(id); if (e) e.innerHTML = html; };
+    set('heroPlace', '<span class="skel skel-text" style="width:18ch"></span>');
+    set('heroTag', '<span class="skel skel-text" style="width:26ch;height:3em"></span>');
+    set('hours', '<tr><td colspan="2"><div class="skel" style="height:150px;margin:0"></div></td></tr>');
+    set('daysList', repeat(7, '<div class="skel" style="height:96px"></div>'));
+    set('pkgNote', '<div class="skel" style="height:90px;margin:0"></div>');
+    set('pkgs', repeat(3, '<div class="skel" style="height:150px"></div>'));
+    set('cats', repeat(6, '<div class="skel" style="height:230px"></div>'));
+  }
+  function restoreBaked() {
+    SKEL_IDS.forEach((id) => { const e = document.getElementById(id); if (e && baked[id] != null) e.innerHTML = baked[id]; });
+  }
+
   (async function load() {
+    showSkeletons();
     let data = null;
     if (SANITY.projectId) { try { data = await fetchSanity(); } catch (e) { console.warn('Sanity unavailable, using data.json', e); } }
-    if (!data) { try { data = await (await fetch('data.json')).json(); } catch (e) { console.warn('data.json unavailable, using baked content', e); } }
-    let sched = null;  // no data at all -> badge shows "CALL FOR HOURS", never stale times
+    if (!data) { try { data = await (await fetch('data.json')).json(); } catch (e) { console.warn('data.json unavailable', e); } }
+    let sched = null;  // no schedule -> badge shows "CALL FOR HOURS", never stale times
     if (data) {
       try {
         renderSite(data.site);
@@ -658,7 +685,9 @@
         renderSpecials(data.specials, data.familyNote);
         renderPackages(data.packagesNote, data.packages);
         renderMenu(data.menu, data.menuFoot);
-      } catch (e) { console.error('render failed, keeping baked content', e); }
+      } catch (e) { console.error('render failed, showing fallback content', e); restoreBaked(); }
+    } else {
+      restoreBaked();  // nothing loaded at all -> reveal the static fallback content
     }
     applyOpenNow(sched);
     setupReveal();
