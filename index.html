@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games and Grub | Pensacola's Video Game Restaurant &amp; Bar</title>
+<meta name="description" content="Pensacola's first video game restaurant in Navy Point. Rent consoles, PCs and board games by the hour, themed food and a full themed bar. Daily specials and birthday packages. Family friendly til 8pm.">
+
+<meta property="og:title" content="Games and Grub | Pensacola">
+<meta property="og:description" content="Play. Eat. Hang out. Pensacola's first video game restaurant and bar, in Navy Point.">
+<meta property="og:type" content="restaurant">
+<meta property="og:image" content="img/logo.jpg">
+<!-- TODO: og:url once domain is live -->
+
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Games and Grub",
+  "servesCuisine": "American comfort food",
+  "telephone": "+1-850-287-9430",
+  "address": {"@type":"PostalAddress","streetAddress":"1000 Gulf Beach Hwy","addressLocality":"Pensacola","addressRegion":"FL","addressCountry":"US"},
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"],"opens":"11:00","closes":"22:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"11:00","closes":"02:00"}
+  ]
+}
+</script>
+
+<style>
+  /* ===== BRAND TOKENS — pulled from the real Games & Grub logo + menu collateral ===== */
+  :root {
+    --navy:      oklch(0.25 0.05 258);   /* brand base (logo background) */
+    --navy-deep: oklch(0.18 0.04 258);   /* panels, footer, shadows */
+    --ink:       oklch(0.16 0.035 258);  /* borders + text on light blocks */
+    --cream:     oklch(0.93 0.035 88);   /* logo cream type */
+    --gold:      oklch(0.76 0.13 68);    /* menu headers / primary accent */
+    --red:       oklch(0.45 0.16 26);    /* d20 red */
+    --green:     oklch(0.60 0.16 150);   /* controller A / minecraft */
+    --orange:    oklch(0.66 0.16 50);    /* ultimate smash */
+    --slate:     oklch(0.42 0.045 285);
+    --tomato:    oklch(0.64 0.20 30);    /* heart / hot accent */
+    --muted:     oklch(0.80 0.03 80);
+
+    --display: "Press Start 2P", system-ui, sans-serif;
+    --body: "VT323", ui-monospace, monospace;
+    --max: 1100px;
+    --shadow: 6px 6px 0 oklch(0.10 0.03 258 / .5);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  body { font-family: var(--body); font-size: 1.35rem; background: var(--navy); color: var(--cream); line-height: 1.4; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.4rem; }
+  section { padding: clamp(2.8rem, 6vw, 5rem) 0; position: relative; }
+
+  h1, h2, h3, .px { font-family: var(--display); line-height: 1.35; }
+  h2 { font-size: clamp(1.3rem, 4.2vw, 2.4rem); text-align: center; margin-bottom: .4rem; color: var(--gold); }
+  .eyebrow { font-family: var(--display); font-size: .7rem; color: var(--tomato); }
+  .sub { text-align: center; color: var(--muted); margin-bottom: 2.2rem; font-size: 1.2rem; }
+
+  .btn { font-family: var(--display); font-size: .68rem; text-decoration: none; display: inline-block;
+    padding: .85rem 1.1rem; border: 3px solid var(--ink); background: var(--gold); color: var(--ink);
+    box-shadow: var(--shadow); transition: transform .06s steps(2), box-shadow .06s steps(2), background-color .1s; }
+  .btn:hover { background: var(--tomato); color: var(--cream); }
+  .btn:active { transform: translate(6px,6px); box-shadow: 0 0 0 var(--ink); }
+  .btn-2 { background: var(--cream); }
+  .btn-2:hover { background: var(--tomato); }
+
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 1.1rem;
+    background: var(--navy-deep); padding: .55rem 1.2rem; border-bottom: 4px solid var(--gold); }
+  .nav .brand { display: flex; align-items: center; gap: .6rem; margin-right: auto; font-family: var(--display); font-size: .72rem; }
+  .nav .brand img { width: 38px; height: 38px; border: 2px solid var(--gold); }
+  .nav a.link { font-family: var(--display); font-size: .6rem; text-decoration: none; padding: .3rem 0;
+    background-image: linear-gradient(var(--gold),var(--gold)); background-size: 0 3px; background-repeat: no-repeat;
+    background-position: 0 100%; transition: background-size .12s steps(4); }
+  .nav a.link:hover { background-size: 100% 3px; color: var(--gold); }
+  @media (max-width: 760px) { .nav a.link { display: none; } .nav .brand span { display: none; } }
+
+  /* HERO */
+  .hero { background:
+      radial-gradient(2px 2px at 20% 30%, var(--cream) 50%, transparent 51%),
+      radial-gradient(2px 2px at 70% 20%, var(--cream) 50%, transparent 51%),
+      radial-gradient(2px 2px at 85% 60%, var(--cream) 50%, transparent 51%),
+      radial-gradient(2px 2px at 35% 75%, var(--cream) 50%, transparent 51%),
+      radial-gradient(2px 2px at 55% 45%, var(--cream) 50%, transparent 51%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    background-repeat: no-repeat; border-bottom: 4px solid var(--gold); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(1.5rem,4vw,3rem); align-items: center;
+    padding-top: clamp(2.5rem,6vw,4rem); padding-bottom: clamp(2.5rem,6vw,4rem); }
+  @media (max-width: 820px) { .hero-grid { grid-template-columns: 1fr; } }
+  .logo-hero { width: min(360px, 80%); image-rendering: auto; border: 4px solid var(--gold); box-shadow: var(--shadow); }
+  .hero .tag { font-size: 1.5rem; margin: 1.3rem 0 1.6rem; max-width: 30ch; }
+  .hero .place { font-family: var(--display); font-size: .62rem; color: var(--gold); margin-bottom: .8rem; }
+  .heartline { display: flex; align-items: center; gap: .7rem; font-family: var(--display);
+    font-size: clamp(.8rem,2.6vw,1.2rem); justify-content: center; margin-bottom: 1.4rem; }
+  .heart { width: 52px; height: 45px; }
+  .heart rect { fill: var(--tomato); }
+  .press { font-family: var(--display); font-size: .62rem; color: var(--gold); margin-top: 1.3rem;
+    display: inline-block; background: none; border: 0; padding: 0; cursor: pointer; }
+  .press:hover { color: var(--tomato); }
+  .press:focus-visible { outline: 3px solid var(--cream); outline-offset: 4px; }
+
+  /* arcade mini-game overlay */
+  .arcade { position: fixed; inset: 0; z-index: 200; background: oklch(0.10 0.03 258 / .94);
+    display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .arcade[hidden] { display: none; }
+  .cab { background: var(--navy-deep); border: 4px solid var(--gold); box-shadow: var(--shadow); padding: 1rem; width: min(660px, 100%); }
+  .cab-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .7rem; }
+  .cab-title { font-family: var(--display); font-size: .72rem; color: var(--gold); }
+  .cab-x { font-family: var(--display); font-size: .66rem; background: var(--red); color: var(--cream);
+    border: 3px solid var(--ink); cursor: pointer; padding: .35rem .55rem; }
+  #game { width: 100%; height: auto; image-rendering: pixelated; background: var(--navy); border: 3px solid var(--ink); display: block; touch-action: manipulation; }
+  .cab-hint { font-family: var(--display); font-size: .56rem; color: var(--muted); text-align: center; margin-top: .7rem; }
+
+  .hud { background: var(--navy-deep); border: 4px solid var(--cream); box-shadow: var(--shadow);
+    padding: 1.2rem 1.3rem; max-width: 380px; margin: 0 auto; }
+  .hud-title { font-family: var(--display); font-size: .62rem; color: var(--green); margin-bottom: 1rem; }
+  .hud ul { list-style: none; display: grid; gap: .55rem; }
+  .hud li { display: flex; align-items: baseline; gap: .7rem; font-family: var(--display); font-size: .56rem;
+    color: var(--muted); border-bottom: 2px dashed oklch(0.93 0.035 88 / .2); padding-bottom: .55rem; }
+  .hud li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .hud li b { color: var(--tomato); font-size: .9rem; min-width: 3.4ch; }
+
+  /* scanlines */
+  .scan { position: fixed; inset: 0; pointer-events: none; z-index: 100; mix-blend-mode: multiply;
+    background: repeating-linear-gradient(oklch(0 0 0 / 0) 0 2px, oklch(0 0 0 / .07) 2px 4px); }
+
+  /* shared blocks */
+  .frame { border: 4px solid var(--ink); box-shadow: var(--shadow); }
+  .frame img { width: 100%; object-fit: cover; display: block; }
+
+  /* PLAY */
+  .play { background: var(--slate); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); }
+  .play-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem,4vw,3rem); align-items: center; }
+  @media (max-width: 820px) { .play-grid { grid-template-columns: 1fr; } }
+  .play h2 { text-align: left; }
+  .play .frame img { aspect-ratio: 4/3; }
+  .price-big { font-family: var(--display); font-size: clamp(1.2rem,4vw,1.9rem); color: var(--cream); margin: .3rem 0 1.3rem; }
+  .price-big span { color: var(--gold); }
+  .play-list { list-style: none; display: grid; gap: 1rem; }
+  .play-list b { font-family: var(--display); font-size: .66rem; color: var(--gold); display: block; margin-bottom: .25rem; }
+
+  /* SPECIALS */
+  .specials { background: var(--navy-deep); border-bottom: 4px solid var(--ink); }
+  .days { list-style: none; display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 720px) { .days { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 440px) { .days { grid-template-columns: 1fr; } }
+  .day { background: var(--navy); border: 3px solid var(--gold); box-shadow: var(--shadow); padding: 1rem; }
+  .day.today { background: var(--gold); color: var(--ink); }
+  .day .d { font-family: var(--display); font-size: .6rem; color: var(--tomato); display: block; margin-bottom: .7rem; }
+  .day.today .d { color: var(--red); }
+  .day p { font-size: 1.15rem; line-height: 1.25; }
+  .fam { text-align: center; font-family: var(--display); font-size: .62rem; color: var(--green); margin-top: 1.8rem; }
+
+  /* PARTIES */
+  .parties { background: var(--navy); border-bottom: 4px solid var(--ink); }
+  .pkg-note { border: 4px solid var(--gold); box-shadow: var(--shadow); padding: 1.1rem 1.3rem; margin-bottom: 1.6rem; background: var(--navy-deep); }
+  .pkg-note b { color: var(--gold); font-family: var(--display); font-size: .62rem; }
+  .pkg-note ul { list-style: none; display: grid; gap: .4rem; margin-top: .8rem; grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 620px) { .pkg-note ul { grid-template-columns: 1fr; } }
+  .pkg-note li { font-size: 1.12rem; padding-left: 1.5rem; position: relative; color: var(--cream); }
+  .pkg-note li::before { content: "\2605"; position: absolute; left: 0; color: var(--gold); }
+
+  .pkgs { display: grid; gap: 1.3rem; margin-bottom: 1.6rem; }
+  .pkg { border: 4px solid var(--ink); box-shadow: var(--shadow); }
+  .pkg .head { padding: .9rem 1.2rem; color: var(--cream); display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem; border-bottom: 4px solid var(--ink); }
+  .pkg .head b { font-family: var(--display); font-size: .78rem; line-height: 1.3; }
+  .pkg .head .pr { font-family: var(--display); font-size: .9rem; color: var(--gold); }
+  .pkg .head .ppl { font-size: 1.1rem; margin-left: auto; white-space: nowrap; opacity: .92; }
+  .pkg.green .head { background: var(--green); }
+  .pkg.red .head { background: var(--red); }
+  .pkg.orange .head { background: var(--orange); }
+  .pkg.green { background: oklch(0.34 0.09 150); }
+  .pkg.red { background: oklch(0.30 0.10 26); }
+  .pkg.orange { background: oklch(0.36 0.09 50); }
+  .pkg ul { list-style: none; padding: 1rem 1.2rem 1.2rem; display: grid; gap: .55rem; grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 620px) { .pkg ul { grid-template-columns: 1fr; } }
+  .pkg li { font-size: 1.15rem; padding-left: 1.7rem; position: relative; color: var(--cream); }
+  .pkg li::before { content: "\2713"; position: absolute; left: 0; color: var(--cream); font-weight: 700; background: oklch(0.55 0.15 150); width: 1.15rem; height: 1.15rem; text-align: center; line-height: 1.15rem; font-size: .85rem; }
+
+  /* MENU */
+  .menu { background: var(--navy-deep); border-bottom: 4px solid var(--ink); }
+  .cats { columns: 3; column-gap: 1.2rem; }
+  @media (max-width: 900px) { .cats { columns: 2; } }
+  @media (max-width: 600px) { .cats { columns: 1; } }
+  .cat { background: var(--navy); border: 4px solid var(--ink); box-shadow: var(--shadow); padding: 1.1rem 1.2rem; break-inside: avoid; margin: 0 0 1.2rem; }
+  .cat h3 { font-size: .72rem; color: var(--gold); margin-bottom: .9rem; }
+  .cat .kick { color: var(--muted); font-size: 1.05rem; margin: -.5rem 0 .9rem; }
+  .row { display: flex; justify-content: space-between; gap: .8rem; align-items: baseline; padding: .35rem 0; border-bottom: 2px dashed oklch(0.93 0.035 88 / .14); }
+  .row:last-child { border-bottom: 0; }
+  .row .n { font-weight: 400; }
+  .row .n b { color: var(--cream); }
+  .row .n small { display: block; color: var(--muted); font-size: 1rem; line-height: 1.2; }
+  .row .pr { color: var(--gold); white-space: nowrap; font-size: 1.2rem; }
+  .cat.wide { column-span: all; margin-top: .4rem; }
+  .twocol { columns: 2; column-gap: 1.6rem; }
+  @media (max-width: 560px) { .twocol { columns: 1; } }
+  .menu-foot { text-align: center; color: var(--muted); margin-top: 1.4rem; font-size: 1.1rem; }
+
+  /* VISIT */
+  .visit-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(1.5rem,4vw,3rem); align-items: start; }
+  @media (max-width: 820px) { .visit-grid { grid-template-columns: 1fr; } }
+  .visit h2 { text-align: left; font-size: clamp(1.05rem,3.4vw,1.5rem); margin: .5rem 0 1rem; }
+  .hours { width: 100%; border-collapse: collapse; font-size: 1.25rem; }
+  .hours td { padding: .5rem .2rem; border-bottom: 2px solid oklch(0.93 0.035 88 / .14); }
+  .hours td:last-child { text-align: right; color: var(--muted); }
+  .hours tr.today td { color: var(--gold); }
+  .hours tr.today td:first-child::before { content: "> "; color: var(--tomato); }
+  .badge { font-family: var(--display); font-size: .6rem; padding: .45rem .7rem; border: 3px solid var(--ink); display: inline-block; margin-bottom: 1rem; box-shadow: var(--shadow); }
+  .badge.open { background: var(--green); color: var(--cream); }
+  .badge.closed { background: var(--ink); color: var(--muted); }
+  .rules { margin-top: 1.4rem; padding: 1rem 1.1rem; border: 3px solid var(--gold); font-size: 1.2rem; }
+  iframe.map { border: 4px solid var(--ink); box-shadow: var(--shadow); width: 100%; height: 240px; margin-top: 1rem; }
+
+  /* BOOK */
+  .book { background: var(--green); color: var(--cream); border-bottom: 4px solid var(--ink); text-align: center; }
+  .book h2 { color: var(--ink); }
+  .book .eyebrow { color: var(--ink); }
+  .book p { max-width: 34ch; margin: .6rem auto 1.6rem; font-size: 1.35rem; }
+  .coin { font-family: var(--display); font-size: 1.6rem; display: inline-block; }
+
+  footer { background: var(--navy-deep); padding: 2.4rem 0; color: var(--muted); font-size: 1.15rem; }
+  .socials a { font-family: var(--display); font-size: .6rem; text-decoration: none; margin-right: 1.3rem; }
+  .socials a:hover { color: var(--gold); }
+
+  /* ANIMATION */
+  @keyframes blink { 0%,49% { opacity: 1 } 50%,100% { opacity: 0 } }
+  @keyframes beat { 0%,100% { transform: scale(1) } 30% { transform: scale(1.25) } 60% { transform: scale(.95) } }
+  @keyframes bob  { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+  @keyframes flick { 0%,100% { opacity: .9 } 50% { opacity: 1 } }
+  @keyframes drop { 0% { transform: translateY(-22px); opacity: 0 } 100% { transform: translateY(0); opacity: 1 } }
+  .logo-hero { animation: drop .5s steps(6) both; }
+  .heart { animation: beat 1s steps(3) infinite; transform-origin: center; }
+  .press { animation: blink 1s steps(1) infinite; }
+  .badge.open { animation: blink 1.4s steps(1) infinite; }
+  .scan { animation: flick 4s steps(2) infinite; }
+  .coin { animation: bob 1.2s steps(4) infinite; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .5s ease-out, transform .5s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { *, .scan { animation: none !important; } .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="scan" aria-hidden="true"></div>
+
+<nav class="nav">
+  <span class="brand"><img src="img/logo.jpg" alt="Games and Grub logo"><span>GAMES &amp; GRUB</span></span>
+  <a class="link" href="#play">PLAY</a>
+  <a class="link" href="#specials">SPECIALS</a>
+  <a class="link" href="#menu">MENU</a>
+  <a class="link" href="#parties">PARTIES</a>
+  <a class="link" href="#visit">VISIT</a>
+  <a class="link" href="#book">BOOK</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="place" id="heroPlace">&#9733; Navy Point, Pensacola</p>
+      <p class="eyebrow">Pensacola's first video game restaurant</p>
+      <h1 class="sr-only" style="position:absolute;left:-9999px">Games and Grub</h1>
+      <img class="logo-hero" src="img/logo.jpg" alt="Games and Grub: controller, burger and d20 logo">
+      <p class="tag" id="heroTag">Play. Eat. Hang out. Rent a console, PC or board game by the hour, with themed food and a full themed bar.</p>
+      <a class="btn" href="#book">BOOK A STATION</a>
+      &nbsp;
+      <a class="btn btn-2" href="#menu">SEE THE MENU</a>
+      <button class="press" id="startBtn" type="button">&#9654; PRESS START</button>
+    </div>
+    <div>
+      <div class="heartline">
+        WE
+        <svg class="heart" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-label="love">
+          <rect x="1" y="0" width="1" height="1"/><rect x="2" y="0" width="1" height="1"/>
+          <rect x="4" y="0" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/>
+          <rect x="0" y="1" width="7" height="1"/><rect x="0" y="2" width="7" height="1"/>
+          <rect x="1" y="3" width="5" height="1"/><rect x="2" y="4" width="3" height="1"/>
+          <rect x="3" y="5" width="1" height="1"/>
+        </svg>
+        GAMEPLAY
+      </div>
+      <div class="hud">
+        <p class="hud-title">&#9654; PLAYER STATS</p>
+        <ul>
+          <li><b>9</b> GAMING STATIONS</li>
+          <li><b>~85</b> BOARD GAMES</li>
+          <li><b>$20</b> PER HOUR</li>
+          <li><b>1-6</b> PLAYERS EACH</li>
+          <li><b>FULL</b> THEMED BAR + KITCHEN</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="play" class="play">
+  <div class="wrap play-grid">
+    <div class="reveal">
+      <h2>PLAY</h2>
+      <p class="price-big"><span>$20</span> / HOUR &middot; 1-6 PLAYERS</p>
+      <ul class="play-list">
+        <li><b>CONSOLES</b>PS5, Xbox One and Switch on comfy couches, plus a retro Atari.</li>
+        <li><b>GAMING PCS</b>Three rigs for the keyboard-and-mouse crowd.</li>
+        <li><b>BOARD GAMES</b>Around 85 in the Guild Hall to borrow, or bring your own.</li>
+        <li><b>TABLETOP &amp; D&amp;D</b>A separate dining room just for the board game, D&amp;D and card game crew. Spread out, stay a while.</li>
+      </ul>
+      <p class="sub" style="text-align:left;margin:1.2rem 0 0">New here? Our game experts set you up.</p>
+    </div>
+    <div class="frame reveal">
+      <img src="img/gaming-room.jpg" alt="A packed Games and Grub gaming room: guests in leather chairs playing on big screens under neon lighting">
+    </div>
+  </div>
+</section>
+
+<section id="specials" class="specials">
+  <div class="wrap">
+    <h2 class="reveal">WEEKLY SPECIALS</h2>
+    <p class="sub reveal">Something happening every day of the week.</p>
+    <ul class="days" id="daysList">
+      <li class="day reveal" data-day="0"><span class="d">SUN</span><p>Free board game with any entr&eacute;e purchase.</p></li>
+      <li class="day reveal" data-day="1"><span class="d">MON</span><p>Big Brothers Big Sisters Magic Card = a free gaming hour.</p></li>
+      <li class="day reveal" data-day="2"><span class="d">TUE</span><p>50% OFF your first gaming hour.</p></li>
+      <li class="day reveal" data-day="3"><span class="d">WED</span><p>2 cocktails + 1 hour at the duo station for $30.</p></li>
+      <li class="day reveal" data-day="4"><span class="d">THU</span><p>Free nachos with party station gaming.</p></li>
+      <li class="day reveal" data-day="5"><span class="d">FRI</span><p>Happy Hour 6-9PM. $2 OFF Shipwreck &amp; Mutiny drinks.</p></li>
+      <li class="day reveal" data-day="6"><span class="d">SAT</span><p>Free hour of gaming with entr&eacute;e purchase, 11AM-1PM.</p></li>
+    </ul>
+    <p class="fam" id="famNote">&#9733; FAMILY FRIENDLY UNTIL 8PM EVERY NIGHT &#9733;</p>
+  </div>
+</section>
+
+<section id="parties" class="parties">
+  <div class="wrap">
+    <h2 class="reveal">BIRTHDAY PACKAGES</h2>
+    <p class="sub reveal">Bring the squad. We handle the rest.</p>
+    <div class="pkg-note reveal" id="pkgNote">
+      <b>EVERY PACKAGE INCLUDES</b>
+      <ul>
+        <li>Unlimited board games</li>
+        <li>A reserved table in the Guild Hall for food setup and staging</li>
+        <li>Gratuity included in the price</li>
+        <li>Add the projector for $25</li>
+        <li>Extra hours at 15% off the standard station rate</li>
+        <li>Larger group sizes available on request</li>
+      </ul>
+    </div>
+    <div class="pkgs" id="pkgs">
+      <div class="pkg green reveal">
+        <div class="head"><b>MINECRAFT DUOS</b><span class="pr">$70</span><span class="ppl">for 2 people</span></div>
+        <ul>
+          <li>Two hours on any duo station</li>
+          <li>Chicken tender platter (10 tenders, 2 fries)</li>
+          <li>Unlimited soda refills for two</li>
+          <li>Cake slice or free dessert for the birthday person</li>
+        </ul>
+      </div>
+      <div class="pkg red reveal">
+        <div class="head"><b>BATTLE ROYALE BASH</b><span class="pr">$155</span><span class="ppl">for 6 people</span></div>
+        <ul>
+          <li>Two hours at the party station</li>
+          <li>Chicken tender platter (30 tenders, 6 fries)</li>
+          <li>Unlimited soda refills for up to 6</li>
+          <li>Cake slice or free dessert for the birthday person</li>
+        </ul>
+      </div>
+      <div class="pkg orange reveal">
+        <div class="head"><b>ULTIMATE SMASH</b><span class="pr">$310</span><span class="ppl">for 12 people</span></div>
+        <ul>
+          <li>Two hours on two party stations</li>
+          <li>Chicken tender platter (60 tenders, 12 fries)</li>
+          <li>Unlimited soda refills for 12</li>
+          <li>Cake slice or free dessert for the birthday person</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.6rem"><a class="btn" href="#book">BOOK A PARTY</a></p>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <div class="wrap">
+    <h2 class="reveal">THE GRUB</h2>
+    <p class="sub reveal">Comfort food, high score. Prices in dollars.</p>
+    <div class="cats" id="cats">
+
+      <div class="cat reveal">
+        <h3>RATED "E" FOR EVERYONE</h3>
+        <p class="kick">Kids menu. Every meal includes a drink plus apple slices or fries.</p>
+        <div class="row"><span class="n"><b>Kirby's Pocket Puff</b><small>Classic crustless PB&amp;J.</small></span><span class="pr">5.95</span></div>
+        <div class="row"><span class="n"><b>Steve's Lava Chicken Jr.</b><small>Two tenders, fries, tamer lava sauce (ketchup).</small></span><span class="pr">8.95</span></div>
+        <div class="row"><span class="n"><b>Koopa Kraft</b><small>Yes, it's Kraft Mac and Cheese.</small></span><span class="pr">7.95</span></div>
+        <div class="row"><span class="n"><b>Bowser Jr. Burger</b><small>Mini cheeseburger for the bite-sized gamer.</small></span><span class="pr">7.95</span></div>
+        <div class="row"><span class="n"><b>Pika! Pika! Cheese</b><small>Grilled cheese.</small></span><span class="pr">5.95</span></div>
+      </div>
+
+      <div class="cat reveal">
+        <h3>BONUS LOOT</h3>
+        <p class="kick">Desserts.</p>
+        <div class="row"><span class="n"><b>The Cake is a Lie</b><small>Slice of decadent chocolate cake. Or is it?</small></span><span class="pr">10.95</span></div>
+        <div class="row"><span class="n"><b>Donkey Kong Split</b><small>Banana split, three scoops vanilla, chocolate drizzle, peanut crumbles, cherry.</small></span><span class="pr">8.95</span></div>
+        <div class="row"><span class="n"><b>Rainbow Respawn</b><small>Assortment of brightly colored macarons.</small></span><span class="pr">11.95</span></div>
+      </div>
+
+      <div class="cat reveal">
+        <h3>IN-GAME EXTRAS</h3>
+        <p class="kick">Sides.</p>
+        <div class="row"><span class="n"><b>Side Salad</b></span><span class="pr">4.95</span></div>
+        <div class="row"><span class="n"><b>Onion Rings</b></span><span class="pr">5.95</span></div>
+        <div class="row"><span class="n"><b>House Chips</b></span><span class="pr">3.95</span></div>
+        <div class="row"><span class="n"><b>Fries</b></span><span class="pr">4.95</span></div>
+      </div>
+
+      <div class="cat reveal">
+        <h3>POWER-UPS</h3>
+        <p class="kick">Non-alcoholic drinks.</p>
+        <div class="row"><span class="n"><b>Soft Drinks</b><small>Pepsi products.</small></span><span class="pr">2.99</span></div>
+        <div class="row"><span class="n"><b>Coffee</b></span><span class="pr">2.99</span></div>
+        <div class="row"><span class="n"><b>Tea</b><small>Sweet or unsweet.</small></span><span class="pr">2.99</span></div>
+        <div class="row"><span class="n"><b>Energy Drinks</b><small>Monster, Rockstar.</small></span><span class="pr">4.99</span></div>
+      </div>
+
+      <div class="cat wide reveal">
+        <h3>THE BAR &middot; SPECIALTY COCKTAILS</h3>
+        <div class="twocol">
+          <div class="row"><span class="n"><b>Princess Peach</b><small>Peach milkshake, vanilla ice cream, cake mix, grenadine, cake vodka.</small></span><span class="pr">11.99</span></div>
+          <div class="row"><span class="n"><b>The Speedy Blue Hedgehog</b><small>Coconut water, white rum, pineapple, golden pineapple ring.</small></span><span class="pr">9.99</span></div>
+          <div class="row"><span class="n"><b>Rainbow Road</b><small>Layered grenadine, coconut rum, OJ, Starry, white rum, blue curacao.</small></span><span class="pr">9.99</span></div>
+          <div class="row"><span class="n"><b>The PacMan</b><small>Vodka, maraschino, Licor 43, lemon.</small></span><span class="pr">8.99</span></div>
+          <div class="row"><span class="n"><b>The Final Smash</b><small>Rum, Monster, grenadine, pomegranate liqueur, cherry bitters.</small></span><span class="pr">12.99</span></div>
+          <div class="row"><span class="n"><b>Chiral Tea</b><small>Sweet tea, pomegranate vodka, vanilla liqueur, touch of gold.</small></span><span class="pr">7.99</span></div>
+          <div class="row"><span class="n"><b>Siberian Express</b><small>Pomegranate vodka, ginger beer, splash of Code Red.</small></span><span class="pr">8.99</span></div>
+          <div class="row"><span class="n"><b>Shirley Templar</b><small>Starry, pomegranate vodka, grenadine, maraschino.</small></span><span class="pr">7.99</span></div>
+          <div class="row"><span class="n"><b>Ocarina of Lime</b><small>Our take on a mojito.</small></span><span class="pr">9.99</span></div>
+          <div class="row"><span class="n"><b>The Metroidvania Shot</b><small>Peach &amp; apple schnapps, maraschino, cream liqueur, grenadine.</small></span><span class="pr">5.99</span></div>
+          <div class="row"><span class="n"><b>Ms. PacMan Shot</b><small>Shot version of the PacMan.</small></span><span class="pr">5.99</span></div>
+        </div>
+        <p class="kick" style="margin:.9rem 0 0">Every cocktail can be made zero-proof. Just ask.</p>
+      </div>
+
+      <div class="cat wide reveal">
+        <h3>BEER &amp; WINE</h3>
+        <div class="twocol">
+          <div class="row"><span class="n"><b>Bud Light</b></span><span class="pr">4.99</span></div>
+          <div class="row"><span class="n"><b>Bud Light Mango Rita</b></span><span class="pr">7.99</span></div>
+          <div class="row"><span class="n"><b>Michelob Ultra</b><small>Regular or non-alcoholic.</small></span><span class="pr">4.99</span></div>
+          <div class="row"><span class="n"><b>Busch Light</b><small>Regular or non-alcoholic.</small></span><span class="pr">4.99</span></div>
+          <div class="row"><span class="n"><b>Coors Light</b></span><span class="pr">3.99</span></div>
+          <div class="row"><span class="n"><b>Corona Light</b></span><span class="pr">4.99</span></div>
+          <div class="row"><span class="n"><b>Yuengling</b></span><span class="pr">4.99</span></div>
+          <div class="row"><span class="n"><b>Pensacola Bay Riptide Amber</b></span><span class="pr">6.99</span></div>
+          <div class="row"><span class="n"><b>Shock Top</b></span><span class="pr">6.99</span></div>
+          <div class="row"><span class="n"><b>Ace Pineapple Cider</b></span><span class="pr">6.99</span></div>
+          <div class="row"><span class="n"><b>Perfect Plain Citra Spin IPA</b></span><span class="pr">6.99</span></div>
+          <div class="row"><span class="n"><b>Perfect Plain Pensacola Pog Sour</b></span><span class="pr">6.99</span></div>
+          <div class="row"><span class="n"><b>Nurtl</b></span><span class="pr">5.99</span></div>
+          <div class="row"><span class="n"><b>Chardonnay</b></span><span class="pr">6.60</span></div>
+          <div class="row"><span class="n"><b>Merlot</b></span><span class="pr">5.50</span></div>
+          <div class="row"><span class="n"><b>Sauvignon Blanc</b></span><span class="pr">5.50</span></div>
+          <div class="row"><span class="n"><b>Dry Rose</b></span><span class="pr">5.50</span></div>
+          <div class="row"><span class="n"><b>Bucket: Domestic</b></span><span class="pr">24.99</span></div>
+          <div class="row"><span class="n"><b>Bucket: Nurtl</b></span><span class="pr">29.99</span></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="menu-foot" id="menuFoot">Plus burgers, flatbreads, loaded fries and nachos from the kitchen. <!-- TODO: get the full mains menu + prices from the owner --> Ask your server for today's specials.</p>
+  </div>
+</section>
+
+<section id="visit" class="visit">
+  <div class="wrap visit-grid">
+    <div class="reveal">
+      <p class="eyebrow">HOURS</p>
+      <h2>WHEN WE'RE OPEN</h2>
+      <span id="status" class="badge closed">HOURS BELOW</span>
+      <table class="hours" id="hours">
+        <tr data-day="0"><td>Sunday</td><td>11:00 am &ndash; 10:00 pm</td></tr>
+        <tr data-day="1"><td>Monday</td><td>11:00 am &ndash; 10:00 pm</td></tr>
+        <tr data-day="2"><td>Tuesday</td><td>11:00 am &ndash; 10:00 pm</td></tr>
+        <tr data-day="3"><td>Wednesday</td><td>11:00 am &ndash; 10:00 pm</td></tr>
+        <tr data-day="4"><td>Thursday</td><td>11:00 am &ndash; 10:00 pm</td></tr>
+        <tr data-day="5"><td>Friday</td><td>11:00 am &ndash; 2:00 am</td></tr>
+        <tr data-day="6"><td>Saturday</td><td>11:00 am &ndash; 2:00 am</td></tr>
+      </table>
+      <div class="rules"><strong>Family friendly until 8pm.</strong> 18+ after 8pm. Guests under 16 must be with an adult.</div>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">FIND US</p>
+      <h2 id="addrLine1" style="text-transform:uppercase">1000 GULF BEACH HWY</h2>
+      <p><span id="addrLine2">Navy Point, Pensacola, FL</span><br><a id="phoneVisit" href="tel:+18502879430" style="color:var(--gold)">(850) 287-9430</a></p>
+      <p style="margin-top:1rem"><a class="btn" href="https://maps.apple.com/?q=Games+and+Grub+Pensacola" target="_blank" rel="noopener">GET DIRECTIONS</a></p>
+      <iframe class="map" title="Map to Games and Grub" loading="lazy" src="https://www.google.com/maps?q=1000+Gulf+Beach+Hwy+Pensacola+FL&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="book">
+  <div class="wrap">
+    <p class="eyebrow">BOOK</p>
+    <h2>GRAB A STATION</h2>
+    <p>Round up a group and pick your hours. $20/hour, seats 1-6. Parties welcome.</p>
+    <p class="coin" aria-hidden="true">&#9679;</p>
+    <p style="margin-top:1rem">
+      <!-- ponytail: v1 booking = phone / Instagram DM, not a custom reservation system.
+           TODO: swap for a real booking link (Tock/Resy/Google Form) if call volume demands it. -->
+      <a class="btn" id="bookCall" href="tel:+18502879430">CALL: (850) 287-9430</a>
+      &nbsp;
+      <a class="btn btn-2" href="https://www.instagram.com/gamesandgrub850/" target="_blank" rel="noopener">DM ON INSTAGRAM</a>
+    </p>
+  </div>
+</section>
+
+<div id="arcade" class="arcade" hidden>
+  <div class="cab">
+    <div class="cab-top">
+      <span class="cab-title">&#9654; GRUB RUNNER</span>
+      <button class="cab-x" id="arcadeClose" type="button" aria-label="Close game">X</button>
+    </div>
+    <canvas id="game" width="660" height="240"></canvas>
+    <p class="cab-hint" id="gameHint">SPACE / TAP = JUMP &middot; ESC = QUIT</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="socials">
+      <a href="https://www.instagram.com/gamesandgrub850/" target="_blank" rel="noopener">INSTAGRAM</a>
+      <a href="https://www.facebook.com/p/Games-and-Grub-61581554401365/" target="_blank" rel="noopener">FACEBOOK</a>
+      <a href="https://www.yelp.com/biz/games-and-grub-pensacola" target="_blank" rel="noopener">YELP</a>
+    </p>
+    <p style="margin-top:1rem" id="footAddr">1000 Gulf Beach Hwy, Navy Point, Pensacola, FL &middot; (850) 287-9430</p>
+    <p style="margin-top:.4rem">&copy; Games and Grub, Pensacola. <!-- TODO: real domain, see BRIEF.md --></p>
+  </div>
+</footer>
+
+<script>
+  // ===== Content: render editable sections from Sanity, falling back to data.json =====
+  // To go live with the CMS, paste your Sanity project id below. Empty = use local data.json.
+  const SANITY = { projectId: 'orw8lnqj', dataset: 'production' };
+
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+  const DAY_ORDER = [0, 1, 2, 3, 4, 5, 6];
+
+  function parseHM(s) { const [h, m] = String(s).split(':').map(Number); return h + (m || 0) / 60; }
+  function fmtTime(s) { let [h, m] = String(s).split(':').map(Number); const ap = h >= 12 ? 'pm' : 'am'; let hh = h % 12 || 12; return hh + ':' + String(m).padStart(2, '0') + ' ' + ap; }
+
+  // Build the open/closed schedule from hours data. close <= open means it closes after midnight.
+  function buildSchedule(hours) {
+    const sched = {};
+    hours.forEach((h) => {
+      if (h.open && h.close) { let o = parseHM(h.open), c = parseHM(h.close); if (c <= o) c += 24; sched[h.day] = [o, c]; }
+      else sched[h.day] = null;
+    });
+    return sched;
+  }
+  function openNow(sched, day, hour) {
+    const t = sched[day];
+    if (t && hour >= t[0] && hour < t[1]) return true;
+    const prev = sched[(day + 6) % 7];
+    return !!(prev && prev[1] > 24 && hour < prev[1] - 24);
+  }
+  // self-check: Friday 1am is closed (opens 11am); Saturday 1am is open (Fri spills to 2am).
+  (function () {
+    const s = buildSchedule([{day:5,open:'11:00',close:'02:00'},{day:6,open:'11:00',close:'02:00'},{day:2,open:'11:00',close:'22:00'}]);
+    console.assert(openNow(s, 5, 1) === false, 'open: Fri 1am closed');
+    console.assert(openNow(s, 6, 1) === true, 'open: Sat 1am open');
+    console.assert(openNow(s, 2, 12) === true, 'open: Tue noon open');
+  })();
+
+  function renderSite(s) {
+    if (!s) return;
+    if (s.place) document.getElementById('heroPlace').innerHTML = '&#9733; ' + esc(s.place);
+    if (s.tagline) document.getElementById('heroTag').textContent = s.tagline;
+    if (s.addressLine1) document.getElementById('addrLine1').textContent = s.addressLine1;
+    if (s.addressLine2) document.getElementById('addrLine2').textContent = s.addressLine2;
+    if (s.phone) {
+      const tel = 'tel:+1' + s.phone.replace(/\D/g, '');
+      const pv = document.getElementById('phoneVisit'); if (pv) { pv.textContent = s.phone; pv.href = tel; }
+      const bc = document.getElementById('bookCall'); if (bc) { bc.textContent = 'CALL: ' + s.phone; bc.href = tel; }
+      const fa = document.getElementById('footAddr');
+      if (fa) fa.innerHTML = esc(s.addressLine1) + ', ' + esc(s.addressLine2) + ' &middot; ' + esc(s.phone);
+    }
+  }
+  function renderHours(hours) {
+    const byDay = {}; hours.forEach((h) => byDay[h.day] = h);
+    document.getElementById('hours').innerHTML = DAY_ORDER.map((d) => {
+      const h = byDay[d]; if (!h) return '';
+      const disp = (h.open && h.close) ? (fmtTime(h.open) + ' &ndash; ' + fmtTime(h.close)) : 'Closed';
+      return '<tr data-day="' + d + '"><td>' + esc(h.label) + '</td><td>' + disp + '</td></tr>';
+    }).join('');
+    return buildSchedule(hours);
+  }
+  function renderSpecials(specials, familyNote) {
+    document.getElementById('daysList').innerHTML = specials.map((s) =>
+      '<li class="day reveal" data-day="' + s.day + '"><span class="d">' + esc(s.code) + '</span><p>' + esc(s.text) + '</p></li>').join('');
+    if (familyNote) document.getElementById('famNote').innerHTML = '&#9733; ' + esc(familyNote) + ' &#9733;';
+  }
+  function renderPackages(note, pkgs) {
+    document.getElementById('pkgNote').innerHTML = '<b>EVERY PACKAGE INCLUDES</b><ul>' + note.map((n) => '<li>' + esc(n) + '</li>').join('') + '</ul>';
+    document.getElementById('pkgs').innerHTML = pkgs.map((p) =>
+      '<div class="pkg ' + esc(p.color) + ' reveal"><div class="head"><b>' + esc(p.name) + '</b><span class="pr">' + esc(p.price) +
+      '</span><span class="ppl">' + esc(p.people) + '</span></div><ul>' + p.items.map((i) => '<li>' + esc(i) + '</li>').join('') + '</ul></div>').join('');
+  }
+  function renderMenu(cats, foot) {
+    document.getElementById('cats').innerHTML = cats.map((c) => {
+      const rows = c.items.map((it) => {
+        const small = it.desc ? '<small>' + esc(it.desc) + '</small>' : '';
+        const price = it.price ? '<span class="pr">' + esc(it.price) + '</span>' : '';
+        return '<div class="row"><span class="n"><b>' + esc(it.name) + '</b>' + small + '</span>' + price + '</div>';
+      }).join('');
+      const body = c.twocol ? '<div class="twocol">' + rows + '</div>' : rows;
+      const kick = c.kick ? '<p class="kick">' + esc(c.kick) + '</p>' : '';
+      const footp = c.foot ? '<p class="kick" style="margin:.9rem 0 0">' + esc(c.foot) + '</p>' : '';
+      return '<div class="cat ' + (c.wide ? 'wide' : '') + ' reveal"><h3>' + esc(c.title) + '</h3>' + kick + body + footp + '</div>';
+    }).join('');
+    if (foot) document.getElementById('menuFoot').textContent = foot;
+  }
+
+  function applyOpenNow(sched) {
+    const now = new Date(), day = now.getDay(), hour = now.getHours() + now.getMinutes() / 60;
+    const row = document.querySelector('#hours tr[data-day="' + day + '"]'); if (row) row.classList.add('today');
+    const sp = document.querySelector('.day[data-day="' + day + '"]'); if (sp) sp.classList.add('today');
+    const el = document.getElementById('status'), isOpen = openNow(sched, day, hour);
+    el.textContent = isOpen ? 'OPEN NOW' : 'CLOSED NOW';
+    el.className = 'badge ' + (isOpen ? 'open' : 'closed');
+  }
+  function setupReveal() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 3 * 0.08) + 's'; io.observe(el); });
+  }
+
+  async function fetchSanity() {
+    const q = encodeURIComponent('*[_type=="siteContent"][0]');
+    const url = 'https://' + SANITY.projectId + '.apicdn.sanity.io/v2021-10-21/data/query/' + SANITY.dataset + '?query=' + q;
+    const r = await fetch(url); if (!r.ok) throw new Error('sanity ' + r.status);
+    const j = await r.json(); if (!j.result) throw new Error('no content'); return j.result;
+  }
+  // ponytail: mirrors data.json hours; only used if BOTH Sanity and data.json fetch fail (e.g. file:// preview).
+  const FALLBACK_SCHED = { 0:[11,22], 1:[11,22], 2:[11,22], 3:[11,22], 4:[11,22], 5:[11,26], 6:[11,26] };
+
+  (async function load() {
+    let data = null;
+    if (SANITY.projectId) { try { data = await fetchSanity(); } catch (e) { console.warn('Sanity unavailable, using data.json', e); } }
+    if (!data) { try { data = await (await fetch('data.json')).json(); } catch (e) { console.warn('data.json unavailable, using baked content', e); } }
+    let sched = FALLBACK_SCHED;
+    if (data) {
+      try {
+        renderSite(data.site);
+        sched = renderHours(data.hours);
+        renderSpecials(data.specials, data.familyNote);
+        renderPackages(data.packagesNote, data.packages);
+        renderMenu(data.menu, data.menuFoot);
+      } catch (e) { console.error('render failed, keeping baked content', e); }
+    }
+    applyOpenNow(sched);
+    setupReveal();
+  })();
+</script>
+
+<script>
+  // GRUB RUNNER — one-button pixel endless runner behind PRESS START.
+  (function () {
+    const overlay = document.getElementById('arcade');
+    const canvas = document.getElementById('game');
+    const hint = document.getElementById('gameHint');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height, GROUND = H - 30;
+    const G = 1500, JUMP = -470;           // gravity, jump velocity (px/s)
+    const HI_KEY = 'gg_hi';
+    let hi = +(localStorage.getItem(HI_KEY) || 0);
+    let state = 'ready', player, obs, speed, score, spawnIn, raf, last;
+
+    // AABB overlap — the core collision test.
+    function hit(a, b) { return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y; }
+    console.assert(hit({x:0,y:0,w:10,h:10}, {x:5,y:5,w:10,h:10}) === true, 'hit: overlap');
+    console.assert(hit({x:0,y:0,w:10,h:10}, {x:20,y:0,w:5,h:5}) === false, 'hit: clear');
+
+    function reset() {
+      player = { x: 70, y: GROUND - 28, w: 26, h: 28, vy: 0 };
+      obs = []; speed = 230; score = 0; spawnIn = 0.6;
+    }
+    function open() { overlay.hidden = false; reset(); state = 'ready'; hint.textContent = 'SPACE / TAP = START'; draw(); }
+    function close() { cancelAnimationFrame(raf); overlay.hidden = true; state = 'ready'; }
+    function start() { reset(); state = 'playing'; hint.textContent = 'SPACE / TAP = JUMP · ESC = QUIT'; last = performance.now(); raf = requestAnimationFrame(loop); }
+    function input() {
+      if (state === 'playing') { if (player.y >= GROUND - player.h - 0.5) player.vy = JUMP; }
+      else start();
+    }
+    function die() {
+      state = 'dead';
+      hi = Math.max(hi, Math.floor(score)); localStorage.setItem(HI_KEY, hi);
+      hint.textContent = 'GAME OVER · SPACE / TAP = RETRY';
+      draw();
+    }
+
+    function loop(t) {
+      const dt = Math.min(0.045, (t - last) / 1000); last = t;
+      player.vy += G * dt; player.y += player.vy * dt;
+      if (player.y > GROUND - player.h) { player.y = GROUND - player.h; player.vy = 0; }
+      speed += 7 * dt; score += speed * dt * 0.04;
+      spawnIn -= dt;
+      if (spawnIn <= 0) {
+        const h = 18 + Math.floor(Math.random() * 26);
+        obs.push({ x: W + 10, y: GROUND - h, w: 16, h: h });
+        spawnIn = Math.max(0.55, 380 / speed) + Math.random() * 0.5;
+      }
+      for (const o of obs) o.x -= speed * dt;
+      obs = obs.filter(o => o.x + o.w > -10);
+      for (const o of obs) if (hit(player, o)) { die(); break; }
+      draw();
+      if (state === 'playing') raf = requestAnimationFrame(loop);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      // ground
+      ctx.fillStyle = '#3a3f63'; ctx.fillRect(0, GROUND, W, 3);
+      // obstacles (red pixel blocks)
+      ctx.fillStyle = '#c0392b';
+      for (const o of obs) ctx.fillRect(o.x, o.y, o.w, o.h);
+      // player burger: bun / patty / bun
+      const p = player;
+      ctx.fillStyle = '#e8a13c'; ctx.fillRect(p.x, p.y, p.w, 9);
+      ctx.fillStyle = '#5b3a23'; ctx.fillRect(p.x, p.y + 9, p.w, 10);
+      ctx.fillStyle = '#e8a13c'; ctx.fillRect(p.x, p.y + 19, p.w, p.h - 19);
+      // score
+      ctx.fillStyle = '#efe7cf'; ctx.font = "16px 'Press Start 2P', monospace"; ctx.textBaseline = 'top';
+      ctx.fillText(String(Math.floor(score)).padStart(5, '0'), 14, 14);
+      ctx.textAlign = 'right'; ctx.fillStyle = '#e8a13c';
+      ctx.fillText('HI ' + String(hi).padStart(5, '0'), W - 14, 14);
+      ctx.textAlign = 'left';
+      if (state === 'dead') {
+        ctx.fillStyle = '#c0392b'; ctx.textAlign = 'center';
+        ctx.fillText('GAME OVER', W / 2, H / 2 - 8);
+        ctx.textAlign = 'left';
+      }
+    }
+
+    document.getElementById('startBtn').addEventListener('click', open);
+    document.getElementById('arcadeClose').addEventListener('click', close);
+    canvas.addEventListener('pointerdown', (e) => { e.preventDefault(); input(); });
+    document.addEventListener('keydown', (e) => {
+      if (overlay.hidden) return;
+      if (e.key === 'Escape') { close(); }
+      else if (e.key === ' ' || e.key === 'ArrowUp' || e.key === 'Spacebar') { e.preventDefault(); input(); }
+    });
+  })();
+</script>
+
+</body>
+</html>

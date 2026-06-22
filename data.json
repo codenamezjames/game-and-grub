@@ -1,0 +1,145 @@
+{
+  "site": {
+    "place": "Navy Point, Pensacola",
+    "tagline": "Play. Eat. Hang out. Rent a console, PC or board game by the hour, with themed food and a full themed bar.",
+    "addressLine1": "1000 Gulf Beach Hwy",
+    "addressLine2": "Navy Point, Pensacola, FL",
+    "phone": "(850) 287-9430"
+  },
+  "hours": [
+    { "day": 0, "label": "Sunday",    "open": "11:00", "close": "22:00" },
+    { "day": 1, "label": "Monday",    "open": "11:00", "close": "22:00" },
+    { "day": 2, "label": "Tuesday",   "open": "11:00", "close": "22:00" },
+    { "day": 3, "label": "Wednesday", "open": "11:00", "close": "22:00" },
+    { "day": 4, "label": "Thursday",  "open": "11:00", "close": "22:00" },
+    { "day": 5, "label": "Friday",    "open": "11:00", "close": "02:00" },
+    { "day": 6, "label": "Saturday",  "open": "11:00", "close": "02:00" }
+  ],
+  "specials": [
+    { "day": 0, "code": "SUN", "text": "Free board game with any entrée purchase." },
+    { "day": 1, "code": "MON", "text": "Big Brothers Big Sisters Magic Card = a free gaming hour." },
+    { "day": 2, "code": "TUE", "text": "50% OFF your first gaming hour." },
+    { "day": 3, "code": "WED", "text": "2 cocktails + 1 hour at the duo station for $30." },
+    { "day": 4, "code": "THU", "text": "Free nachos with party station gaming." },
+    { "day": 5, "code": "FRI", "text": "Happy Hour 6-9PM. $2 OFF Shipwreck & Mutiny drinks." },
+    { "day": 6, "code": "SAT", "text": "Free hour of gaming with entrée purchase, 11AM-1PM." }
+  ],
+  "familyNote": "FAMILY FRIENDLY UNTIL 8PM EVERY NIGHT",
+  "packagesNote": [
+    "Unlimited board games",
+    "A reserved table in the Guild Hall for food setup and staging",
+    "Gratuity included in the price",
+    "Add the projector for $25",
+    "Extra hours at 15% off the standard station rate",
+    "Larger group sizes available on request"
+  ],
+  "packages": [
+    {
+      "color": "green", "name": "MINECRAFT DUOS", "price": "$70", "people": "for 2 people",
+      "items": [
+        "Two hours on any duo station",
+        "Chicken tender platter (10 tenders, 2 fries)",
+        "Unlimited soda refills for two",
+        "Cake slice or free dessert for the birthday person"
+      ]
+    },
+    {
+      "color": "red", "name": "BATTLE ROYALE BASH", "price": "$155", "people": "for 6 people",
+      "items": [
+        "Two hours at the party station",
+        "Chicken tender platter (30 tenders, 6 fries)",
+        "Unlimited soda refills for up to 6",
+        "Cake slice or free dessert for the birthday person"
+      ]
+    },
+    {
+      "color": "orange", "name": "ULTIMATE SMASH", "price": "$310", "people": "for 12 people",
+      "items": [
+        "Two hours on two party stations",
+        "Chicken tender platter (60 tenders, 12 fries)",
+        "Unlimited soda refills for 12",
+        "Cake slice or free dessert for the birthday person"
+      ]
+    }
+  ],
+  "menu": [
+    {
+      "title": "RATED \"E\" FOR EVERYONE", "kick": "Kids menu. Every meal includes a drink plus apple slices or fries.",
+      "items": [
+        { "name": "Kirby's Pocket Puff", "desc": "Classic crustless PB&J.", "price": "5.95" },
+        { "name": "Steve's Lava Chicken Jr.", "desc": "Two tenders, fries, tamer lava sauce (ketchup).", "price": "8.95" },
+        { "name": "Koopa Kraft", "desc": "Yes, it's Kraft Mac and Cheese.", "price": "7.95" },
+        { "name": "Bowser Jr. Burger", "desc": "Mini cheeseburger for the bite-sized gamer.", "price": "7.95" },
+        { "name": "Pika! Pika! Cheese", "desc": "Grilled cheese.", "price": "5.95" }
+      ]
+    },
+    {
+      "title": "BONUS LOOT", "kick": "Desserts.",
+      "items": [
+        { "name": "The Cake is a Lie", "desc": "Slice of decadent chocolate cake. Or is it?", "price": "10.95" },
+        { "name": "Donkey Kong Split", "desc": "Banana split, three scoops vanilla, chocolate drizzle, peanut crumbles, cherry.", "price": "8.95" },
+        { "name": "Rainbow Respawn", "desc": "Assortment of brightly colored macarons.", "price": "11.95" }
+      ]
+    },
+    {
+      "title": "IN-GAME EXTRAS", "kick": "Sides.",
+      "items": [
+        { "name": "Side Salad", "price": "4.95" },
+        { "name": "Onion Rings", "price": "5.95" },
+        { "name": "House Chips", "price": "3.95" },
+        { "name": "Fries", "price": "4.95" }
+      ]
+    },
+    {
+      "title": "POWER-UPS", "kick": "Non-alcoholic drinks.",
+      "items": [
+        { "name": "Soft Drinks", "desc": "Pepsi products.", "price": "2.99" },
+        { "name": "Coffee", "price": "2.99" },
+        { "name": "Tea", "desc": "Sweet or unsweet.", "price": "2.99" },
+        { "name": "Energy Drinks", "desc": "Monster, Rockstar.", "price": "4.99" }
+      ]
+    },
+    {
+      "title": "THE BAR · SPECIALTY COCKTAILS", "wide": true, "twocol": true,
+      "foot": "Every cocktail can be made zero-proof. Just ask.",
+      "items": [
+        { "name": "Princess Peach", "desc": "Peach milkshake, vanilla ice cream, cake mix, grenadine, cake vodka.", "price": "11.99" },
+        { "name": "The Speedy Blue Hedgehog", "desc": "Coconut water, white rum, pineapple, golden pineapple ring.", "price": "9.99" },
+        { "name": "Rainbow Road", "desc": "Layered grenadine, coconut rum, OJ, Starry, white rum, blue curacao.", "price": "9.99" },
+        { "name": "The PacMan", "desc": "Vodka, maraschino, Licor 43, lemon.", "price": "8.99" },
+        { "name": "The Final Smash", "desc": "Rum, Monster, grenadine, pomegranate liqueur, cherry bitters.", "price": "12.99" },
+        { "name": "Chiral Tea", "desc": "Sweet tea, pomegranate vodka, vanilla liqueur, touch of gold.", "price": "7.99" },
+        { "name": "Siberian Express", "desc": "Pomegranate vodka, ginger beer, splash of Code Red.", "price": "8.99" },
+        { "name": "Shirley Templar", "desc": "Starry, pomegranate vodka, grenadine, maraschino.", "price": "7.99" },
+        { "name": "Ocarina of Lime", "desc": "Our take on a mojito.", "price": "9.99" },
+        { "name": "The Metroidvania Shot", "desc": "Peach & apple schnapps, maraschino, cream liqueur, grenadine.", "price": "5.99" },
+        { "name": "Ms. PacMan Shot", "desc": "Shot version of the PacMan.", "price": "5.99" }
+      ]
+    },
+    {
+      "title": "BEER & WINE", "wide": true, "twocol": true,
+      "items": [
+        { "name": "Bud Light", "price": "4.99" },
+        { "name": "Bud Light Mango Rita", "price": "7.99" },
+        { "name": "Michelob Ultra", "desc": "Regular or non-alcoholic.", "price": "4.99" },
+        { "name": "Busch Light", "desc": "Regular or non-alcoholic.", "price": "4.99" },
+        { "name": "Coors Light", "price": "3.99" },
+        { "name": "Corona Light", "price": "4.99" },
+        { "name": "Yuengling", "price": "4.99" },
+        { "name": "Pensacola Bay Riptide Amber", "price": "6.99" },
+        { "name": "Shock Top", "price": "6.99" },
+        { "name": "Ace Pineapple Cider", "price": "6.99" },
+        { "name": "Perfect Plain Citra Spin IPA", "price": "6.99" },
+        { "name": "Perfect Plain Pensacola Pog Sour", "price": "6.99" },
+        { "name": "Nurtl", "price": "5.99" },
+        { "name": "Chardonnay", "price": "6.60" },
+        { "name": "Merlot", "price": "5.50" },
+        { "name": "Sauvignon Blanc", "price": "5.50" },
+        { "name": "Dry Rose", "price": "5.50" },
+        { "name": "Bucket: Domestic", "price": "24.99" },
+        { "name": "Bucket: Nurtl", "price": "29.99" }
+      ]
+    }
+  ],
+  "menuFoot": "Plus burgers, flatbreads, loaded fries and nachos from the kitchen. Ask your server for today's specials."
+}
