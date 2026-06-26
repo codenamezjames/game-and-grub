@@ -6,11 +6,12 @@
 <title>Games and Grub | Pensacola's Video Game Restaurant &amp; Bar</title>
 <meta name="description" content="Pensacola's first video game restaurant in Navy Point. Rent consoles, PCs and board games by the hour, themed food and a full themed bar. Daily specials and birthday packages. Family friendly til 8pm.">
 
+<link rel="canonical" href="https://gamesandgrub.quest/">
 <meta property="og:title" content="Games and Grub | Pensacola">
 <meta property="og:description" content="Play. Eat. Hang out. Pensacola's first video game restaurant and bar, in Navy Point.">
 <meta property="og:type" content="restaurant">
-<meta property="og:image" content="img/logo.jpg">
-<!-- TODO: og:url once domain is live -->
+<meta property="og:url" content="https://gamesandgrub.quest/">
+<meta property="og:image" content="https://gamesandgrub.quest/img/logo.jpg">
 
 <link rel="icon" href="img/logo.jpg">
 <link rel="preload" href="fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
@@ -23,6 +24,11 @@
   "name": "Games and Grub",
   "servesCuisine": "American comfort food",
   "telephone": "+1-850-287-9430",
+  "url": "https://gamesandgrub.quest/",
+  "image": "https://gamesandgrub.quest/img/logo.jpg",
+  "priceRange": "$$",
+  "acceptsReservations": true,
+  "sameAs": ["https://www.instagram.com/gamesandgrub850/","https://www.facebook.com/p/Games-and-Grub-61581554401365/","https://www.yelp.com/biz/games-and-grub-pensacola"],
   "address": {"@type":"PostalAddress","streetAddress":"1000 Gulf Beach Hwy","addressLocality":"Pensacola","addressRegion":"FL","addressCountry":"US"},
   "openingHoursSpecification": [
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"],"opens":"11:00","closes":"22:00"},
@@ -84,7 +90,27 @@
     background-image: linear-gradient(var(--gold),var(--gold)); background-size: 0 3px; background-repeat: no-repeat;
     background-position: 0 100%; transition: background-size .12s steps(4); }
   .nav a.link:hover { background-size: 100% 3px; color: var(--gold); }
-  @media (max-width: 760px) { .nav a.link { display: none; } .nav .brand span { display: none; } }
+  /* Desktop: links inline, burger hidden. .nav-links keeps display:flex so the closed <details> doesn't hide them. */
+  .nav-menu { margin-left: 0; }
+  .nav-menu > summary { display: none; }
+  .nav-links { display: flex; align-items: center; gap: 1.1rem; }
+  @media (max-width: 760px) {
+    .nav .brand span { display: none; }
+    .nav-menu { position: relative; }
+    .nav-menu > summary { display: grid; place-items: center; width: 2.4rem; height: 2.4rem;
+      list-style: none; cursor: pointer; border: 3px solid var(--gold); }
+    .nav-menu > summary svg { display: block; fill: var(--gold); }
+    .nav-menu > summary::-webkit-details-marker { display: none; }
+    .nav-menu > summary:focus-visible { outline: 3px solid var(--cream); outline-offset: 2px; }
+    .nav-links { display: none; position: absolute; top: calc(100% + .55rem); right: 0; flex-direction: column;
+      gap: .9rem; background: var(--navy-deep); border: 3px solid var(--gold); padding: 1rem 1.2rem; box-shadow: var(--shadow); }
+    .nav-menu[open] > .nav-links { display: flex; }
+  }
+
+  /* skip-to-content: off-screen until keyboard focus */
+  .skip { position: absolute; left: -9999px; top: 0; z-index: 300; background: var(--gold); color: var(--ink);
+    font-family: var(--display); font-size: .58rem; padding: .7rem 1rem; border: 3px solid var(--ink); text-decoration: none; }
+  .skip:focus { left: .6rem; top: .6rem; }
 
   /* HERO */
   .hero { background:
@@ -263,19 +289,26 @@
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <div class="scan" aria-hidden="true"></div>
 
 <nav class="nav">
   <span class="brand"><img src="img/logo.jpg" alt="Games and Grub logo"><span>GAMES &amp; GRUB</span></span>
-  <a class="link" href="#play">PLAY</a>
-  <a class="link" href="#specials">SPECIALS</a>
-  <a class="link" href="#menu">MENU</a>
-  <a class="link" href="#parties">PARTIES</a>
-  <a class="link" href="#visit">VISIT</a>
-  <a class="link" href="#book">BOOK</a>
+  <details class="nav-menu">
+    <summary aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="5" width="18" height="2.6"/><rect x="3" y="10.7" width="18" height="2.6"/><rect x="3" y="16.4" width="18" height="2.6"/></svg></summary>
+    <div class="nav-links" onclick="this.closest('.nav-menu').open = false">
+      <a class="link" href="#play">PLAY</a>
+      <a class="link" href="#specials">SPECIALS</a>
+      <a class="link" href="#menu">MENU</a>
+      <a class="link" href="#parties">PARTIES</a>
+      <a class="link" href="#visit">VISIT</a>
+      <a class="link" href="#book">BOOK</a>
+    </div>
+  </details>
 </nav>
 
-<header class="hero">
+<header class="hero" id="main" tabindex="-1">
   <div class="wrap hero-grid">
     <div>
       <p class="place" id="heroPlace">&#9733; Navy Point, Pensacola</p>
@@ -604,6 +637,8 @@
     const s = data.site || {};
     const j = {
       '@context': 'https://schema.org', '@type': 'Restaurant', name: 'Games and Grub', servesCuisine: 'American comfort food',
+      url: 'https://gamesandgrub.quest/', image: 'https://gamesandgrub.quest/img/logo.jpg', priceRange: '$$', acceptsReservations: true,
+      sameAs: ['https://www.instagram.com/gamesandgrub850/', 'https://www.facebook.com/p/Games-and-Grub-61581554401365/', 'https://www.yelp.com/biz/games-and-grub-pensacola'],
       address: { '@type': 'PostalAddress', streetAddress: s.addressLine1 || '1000 Gulf Beach Hwy', addressLocality: 'Pensacola', addressRegion: 'FL', addressCountry: 'US' },
       openingHoursSpecification: spec,
     };
