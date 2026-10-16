@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Games and Grub | Pensacola's Video Game Restaurant &amp; Bar</title>
-<meta name="description" content="Pensacola's first video game restaurant in Navy Point. Rent consoles, PCs and board games by the hour, themed food and a full themed bar. Daily specials and birthday packages. Family friendly til 8pm.">
+<meta name="description" content="Pensacola's first video game restaurant in Navy Point. Rent consoles, PCs and board games by the hour, themed food and a full themed bar. Daily specials, weekly Smash Bros. tournaments, birthday and corporate events. Family friendly til 8pm.">
 
 <link rel="canonical" href="https://gamesandgrub.quest/">
 <meta property="og:title" content="Games and Grub | Pensacola">
@@ -24,6 +24,7 @@
   "name": "Games and Grub",
   "servesCuisine": "American comfort food",
   "telephone": "+1-850-287-9430",
+  "email": "gamesandgrub850@gmail.com",
   "url": "https://gamesandgrub.quest/",
   "image": "https://gamesandgrub.quest/img/logo.jpg",
   "priceRange": "$$",
@@ -189,6 +190,24 @@
   .play-list { list-style: none; display: grid; gap: 1rem; }
   .play-list b { font-family: var(--display); font-size: .66rem; color: var(--gold); display: block; margin-bottom: .25rem; }
 
+  .stations { margin-top: clamp(2rem,5vw,3rem); }
+  .day .pr { font-family: var(--display); font-size: .7rem; color: var(--gold); display: block; margin-bottom: .5rem; }
+  .play .day { background: var(--navy-deep); }
+  .library { margin-top: clamp(2rem,5vw,3rem); text-align: center; }
+  .library h3 { font-size: clamp(.8rem,2.6vw,1.1rem); color: var(--gold); margin-bottom: .5rem; }
+  .subs { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1.2rem 0 2rem; }
+  .library .cats { text-align: left; }
+  .fine { color: var(--muted); font-size: 1rem; margin-top: .4rem; }
+  .evt .reel { margin-top: 1.8rem; text-align: center; }
+
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  @media (max-width: 720px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  .gallery figure { margin: 0; background: var(--navy); }
+  .gallery img { aspect-ratio: 1 / 1; height: auto; }
+  .gallery figcaption { font-family: var(--display); font-size: .5rem; color: var(--gold); padding: .6rem .7rem; border-top: 4px solid var(--ink); }
+  .evt .frame { margin-top: 1.8rem; }
+  .evt .frame img { aspect-ratio: 16 / 7; height: auto; }
+
   /* SPECIALS */
   .specials { background: var(--navy-deep); border-bottom: 4px solid var(--ink); }
   .days { list-style: none; display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
@@ -308,6 +327,7 @@
     <div class="nav-links" onclick="this.closest('.nav-menu').open = false">
       <a class="link" href="#play">PLAY</a>
       <a class="link" href="#specials">SPECIALS</a>
+      <a class="link" href="#events">EVENTS</a>
       <a class="link" href="#menu">MENU</a>
       <a class="link" href="#parties">PARTIES</a>
       <a class="link" href="#visit">VISIT</a>
@@ -346,8 +366,9 @@
         <p class="hud-title">&#9654; PLAYER STATS</p>
         <ul>
           <li><b>9</b> GAMING STATIONS</li>
+          <li><b>1000+</b> VIDEO GAMES</li>
           <li><b>~85</b> BOARD GAMES</li>
-          <li><b id="rateHud">$20</b> PER HOUR</li>
+          <li><b id="rateHud">$10</b> /HR AND UP</li>
           <li><b>1-6</b> PLAYERS EACH</li>
           <li><b>FULL</b> THEMED BAR + KITCHEN</li>
         </ul>
@@ -360,7 +381,7 @@
   <div class="wrap play-grid">
     <div class="reveal">
       <h2>PLAY</h2>
-      <p class="price-big"><span id="ratePlay">$20</span> / HOUR &middot; 1-6 PLAYERS</p>
+      <p class="price-big">FROM <span id="ratePlay">$10</span> / HOUR &middot; 1-6 PLAYERS</p>
       <ul class="play-list">
         <li><b>CONSOLES</b>PS5, Xbox One and Switch on comfy couches, plus a retro Atari.</li>
         <li><b>GAMING PCS</b>Three rigs for the keyboard-and-mouse crowd.</li>
@@ -371,6 +392,33 @@
     </div>
     <div class="frame reveal">
       <img src="img/gaming-room.jpg" alt="A packed Games and Grub gaming room: guests in leather chairs playing on big screens under neon lighting">
+    </div>
+  </div>
+  <div class="wrap">
+    <ul class="days stations" id="stations">
+      <li class="day reveal"><span class="d">PC STATION</span><span class="pr">$10/hr</span><p>High-end specs, premium peripherals.</p></li>
+      <li class="day reveal"><span class="d">DUO STATION</span><span class="pr">$20/hr</span><p>Co-op, 1v1s, or chilling with a friend.</p></li>
+      <li class="day reveal"><span class="d">PARTY STATION</span><span class="pr">$30/hr</span><p>Group gaming on large displays.</p></li>
+      <li class="day reveal"><span class="d">PROJECTOR SETUP</span><span class="pr">$50/hr</span><p>The big screen experience.</p></li>
+      <li class="day reveal"><span class="d">BOARD GAMES</span><span class="pr">$8</span><p>All-day access to the whole library.</p></li>
+    </ul>
+    <div class="library reveal">
+      <h3>THE GAME LIBRARY</h3>
+      <p>1000+ physical and digital games, including the top subscription tiers on every console.</p>
+      <p class="subs">
+        <a class="btn" href="https://www.xbox.com/en-US/xbox-game-pass/games" target="_blank" rel="noopener">XBOX GAME PASS ULTIMATE</a>
+        <a class="btn" href="https://www.playstation.com/en-us/ps-plus/games/" target="_blank" rel="noopener">PLAYSTATION PLUS PREMIUM</a>
+        <a class="btn" href="https://www.nintendo.com/us/online/nintendo-switch-online/classic-games/" target="_blank" rel="noopener">SWITCH ONLINE + EXPANSION</a>
+      </p>
+      <!-- ponytail: featured titles are static HTML, move to the CMS if they change often -->
+      <div class="cats">
+        <div class="cat"><h3>FIGHTERS</h3><div class="row"><span class="n">Tekken 8</span></div><div class="row"><span class="n">Street Fighter 6</span></div><div class="row"><span class="n">Mortal Kombat 1</span></div><div class="row"><span class="n">Smash Bros. Ultimate</span></div><div class="row"><span class="n">Marvel vs. Capcom Collection</span></div></div>
+        <div class="cat"><h3>SHOOTERS</h3><div class="row"><span class="n">Call of Duty: Black Ops 6</span></div><div class="row"><span class="n">Halo Infinite</span></div><div class="row"><span class="n">Valorant</span></div><div class="row"><span class="n">Overwatch 2</span></div><div class="row"><span class="n">Fortnite</span></div><div class="row"><span class="n">Apex Legends</span></div></div>
+        <div class="cat"><h3>PARTY &amp; CO-OP</h3><div class="row"><span class="n">Mario Kart 8 Deluxe</span></div><div class="row"><span class="n">Mario Party Superstars</span></div><div class="row"><span class="n">Super Mario Party</span></div><div class="row"><span class="n">It Takes Two</span></div><div class="row"><span class="n">Gang Beasts</span></div></div>
+        <div class="cat"><h3>SPORTS</h3><div class="row"><span class="n">EA Sports College Football 25</span></div><div class="row"><span class="n">EA Sports FC 25</span></div><div class="row"><span class="n">NBA 2K23</span></div><div class="row"><span class="n">Rocket League</span></div></div>
+        <div class="cat"><h3>PC HITS</h3><div class="row"><span class="n">League of Legends</span></div><div class="row"><span class="n">World of Warcraft</span></div><div class="row"><span class="n">Minecraft</span></div><div class="row"><span class="n">Counter-Strike 2</span></div><div class="row"><span class="n">Dota 2</span></div></div>
+      </div>
+      <p class="fine">Library subject to availability. Physical disc availability varies by station.</p>
     </div>
   </div>
 </section>
@@ -389,6 +437,24 @@
       <li class="day reveal" data-day="6"><span class="d">SAT</span><p>Free hour of gaming with entr&eacute;e purchase, 11AM-1PM.</p></li>
     </ul>
     <p class="fam" id="famNote">&#9733; FAMILY FRIENDLY UNTIL 8PM EVERY NIGHT &#9733;</p>
+  </div>
+</section>
+
+<section id="events" class="parties evt">
+  <div class="wrap">
+    <h2 class="reveal">COMMUNITY EVENTS</h2>
+    <p class="sub reveal">Smash Bros. tournaments, D&amp;D nights and more. Brackets and sign-ups go up on Facebook.</p>
+    <ul class="days" id="events-list">
+      <li class="day reveal"><span class="d">FRI 8PM</span><span class="pr">FIGHT NIGHT</span><p>Pensacola's biggest weekly Super Smash Bros. tournament. Cash pool prizes.</p></li>
+      <li class="day reveal"><span class="d">SAT 8PM</span><span class="pr">FREE PLAY TOURNAMENT</span><p>Weekly tournament every Saturday night.</p></li>
+      <li class="day reveal"><span class="d">ONGOING</span><span class="pr">D&amp;D + TABLETOP NIGHTS</span><p>Dungeons &amp; Dragons and tabletop nights. Check Facebook for dates.</p></li>
+    </ul>
+    <div class="frame reveal"><img src="img/gaming-setup.jpg" alt="A crowd watching a game on the big projector screen at Games and Grub" width="1008" height="756" loading="lazy"></div>
+    <p class="reel reveal">
+      <a class="btn" href="https://www.facebook.com/share/v/17x81KqqCk/" target="_blank" rel="noopener">&#9654; WATCH FIGHT NIGHT</a>
+      &nbsp;
+      <a class="btn btn-2" href="https://www.facebook.com/profile.php?id=61581554401365" target="_blank" rel="noopener">EVENT CALENDAR</a>
+    </p>
   </div>
 </section>
 
@@ -437,6 +503,17 @@
       </div>
     </div>
     <p style="text-align:center;margin-top:1.6rem"><a class="btn" href="#book">BOOK A PARTY</a></p>
+    <div class="pkg-note reveal" style="margin-top:2.4rem">
+      <b>CORPORATE &amp; PRIVATE EVENTS</b>
+      <p style="margin-top:.6rem">Ditch the trust falls and play some Smash Bros. Team building, holiday parties and private buyouts.</p>
+      <ul>
+        <li>Full venue buyouts available</li>
+        <li>Organized tournaments</li>
+        <li>Projector for presentations</li>
+        <li>Custom packages for LAN parties, charity streams and more</li>
+      </ul>
+      <p style="margin-top:1.1rem"><a class="btn" href="mailto:gamesandgrub850@gmail.com">EMAIL US</a> &nbsp; <a class="btn btn-2" href="tel:+18502879430">CALL TO BOOK</a></p>
+    </div>
   </div>
 </section>
 
@@ -444,7 +521,37 @@
   <div class="wrap">
     <h2 class="reveal">THE GRUB</h2>
     <p class="sub reveal">Comfort food, high score. Prices in dollars.</p>
+    <div class="gallery">
+      <figure class="frame reveal"><img src="img/menu/triforce-nachos.jpg" alt="Triforce Nachos" width="800" height="800" loading="lazy"><figcaption>TRIFORCE NACHOS</figcaption></figure>
+      <figure class="frame reveal"><img src="img/menu/super-smash-burger.jpg" alt="Super Smash Burger" width="800" height="800" loading="lazy"><figcaption>SUPER SMASH BURGER</figcaption></figure>
+      <figure class="frame reveal"><img src="img/menu/kamehameha-fries.jpg" alt="Kamehameha Fries" width="800" height="800" loading="lazy"><figcaption>KAMEHAMEHA FRIES</figcaption></figure>
+      <figure class="frame reveal"><img src="img/menu/final-fantasy-flatbread.jpg" alt="Final Fantasy Flatbread" width="800" height="800" loading="lazy"><figcaption>FINAL FANTASY FLATBREAD</figcaption></figure>
+      <figure class="frame reveal"><img src="img/menu/meowster-chefs-salad.jpg" alt="Meowster Chef's Salad" width="800" height="800" loading="lazy"><figcaption>MEOWSTER CHEF'S SALAD</figcaption></figure>
+      <figure class="frame reveal"><img src="img/menu/pika-pika-cheese.jpg" alt="Pika! Pika! Cheese" width="800" height="800" loading="lazy"><figcaption>PIKA! PIKA! CHEESE</figcaption></figure>
+      <figure class="frame reveal"><img src="img/menu/princess-peach.jpg" alt="Princess Peach" width="800" height="800" loading="lazy"><figcaption>PRINCESS PEACH</figcaption></figure>
+      <figure class="frame reveal"><img src="img/menu/rainbow-road.jpg" alt="Rainbow Road" width="800" height="800" loading="lazy"><figcaption>RAINBOW ROAD</figcaption></figure>
+    </div>
     <div class="cats" id="cats">
+
+      <div class="cat reveal">
+        <h3>SIDE MISSIONS</h3>
+        <p class="kick">Appetizers.</p>
+        <div class="row"><span class="n"><b>Triforce Nachos</b><small>Courage (jalape&ntilde;os), Wisdom (guac) and Power (queso) on golden Hyrulean chips. Add chicken or beef 4.99.</small></span><span class="pr">10.95</span></div>
+        <div class="row"><span class="n"><b>Mana Sticks</b><small>Garlic parmesan breadsticks with marinara and alfredo.</small></span><span class="pr">8.95</span></div>
+        <div class="row"><span class="n"><b>Golden Coins</b><small>Loot you can eat! Breaded fried pickle slices with ranch.</small></span><span class="pr">7.95</span></div>
+        <div class="row"><span class="n"><b>Onion Knight Dip</b><small>Imported from Catarina. With house chips and veggies.</small></span><span class="pr">6.95</span></div>
+      </div>
+
+      <div class="cat reveal">
+        <h3>MAIN QUESTS</h3>
+        <p class="kick">Entr&eacute;es.</p>
+        <div class="row"><span class="n"><b>Super Smash Burger</b><small>Single-patty smashburger, bacon and cheddar. Served with chips.</small></span><span class="pr">13.95</span></div>
+        <div class="row"><span class="n"><b>The 1-1-7 Burger</b><small>Worthy of a Spartan. Triple-stacked beef, cheddar, bacon, veggies, onion rings.</small></span><span class="pr">15.95</span></div>
+        <div class="row"><span class="n"><b>Final Fantasy Flatbread</b><small>Crafted by culinary mages. Thin crust, sun-dried tomatoes, feta, balsamic glaze.</small></span><span class="pr">15.95</span></div>
+        <div class="row"><span class="n"><b>Steve's Lava Chicken</b><small>Chicken tender platter with fries and 'lava' (buffalo) dipping sauce.</small></span><span class="pr">11.95</span></div>
+        <div class="row"><span class="n"><b>Kamehameha Fries</b><small>Super Saiyan blast of flavor. Loaded fries with BBQ pork or buffalo chicken.</small></span><span class="pr">12.95</span></div>
+        <div class="row"><span class="n"><b>Meowster Chef's Salad</b><small>Field greens, ham, bacon, egg, cucumber, cheese, croutons.</small></span><span class="pr">14.95</span></div>
+      </div>
 
       <div class="cat reveal">
         <h3>RATED "E" FOR EVERYONE</h3>
@@ -453,7 +560,7 @@
         <div class="row"><span class="n"><b>Steve's Lava Chicken Jr.</b><small>Two tenders, fries, tamer lava sauce (ketchup).</small></span></div>
         <div class="row"><span class="n"><b>Koopa Kraft</b><small>Yes, it's Kraft Mac and Cheese.</small></span></div>
         <div class="row"><span class="n"><b>Bowser Jr. Burger</b><small>Mini cheeseburger for the bite-sized gamer.</small></span></div>
-        <div class="row"><span class="n"><b>Pika! Pika! Cheese</b><small>Grilled cheese.</small></span></div>
+        <div class="row"><span class="n"><b>Pika! Pika! Cheese</b><small>Grilled cheese with the face of everyone's favorite yellow buddy.</small></span></div>
       </div>
 
       <div class="cat reveal">
@@ -526,7 +633,7 @@
       </div>
 
     </div>
-    <p class="menu-foot" id="menuFoot">Plus burgers, flatbreads, loaded fries and nachos from the kitchen. <!-- TODO: get the full mains menu + prices from the owner --> Ask your server for today's specials.</p>
+    <p class="menu-foot" id="menuFoot">Ask your server for today's specials.</p>
   </div>
 </section>
 
@@ -542,7 +649,7 @@
     <div class="reveal">
       <p class="eyebrow">FIND US</p>
       <h2 id="addrLine1" style="text-transform:uppercase">1000 GULF BEACH HWY</h2>
-      <p><span id="addrLine2">Navy Point, Pensacola, FL</span><br><a id="phoneVisit" href="tel:+18502879430" style="color:var(--gold)">(850) 287-9430</a></p>
+      <p><span id="addrLine2">Navy Point, Pensacola, FL</span><br><a id="phoneVisit" href="tel:+18502879430" style="color:var(--gold)">(850) 287-9430</a><br><a class="email" href="mailto:gamesandgrub850@gmail.com" style="color:var(--gold)">gamesandgrub850@gmail.com</a></p>
       <p style="margin-top:1rem"><a class="btn" href="https://maps.apple.com/?q=Games+and+Grub+Pensacola" target="_blank" rel="noopener">GET DIRECTIONS</a></p>
       <iframe class="map" title="Map to Games and Grub" loading="lazy" src="https://www.google.com/maps?q=1000+Gulf+Beach+Hwy+Pensacola+FL&output=embed"></iframe>
     </div>
@@ -553,7 +660,7 @@
   <div class="wrap">
     <p class="eyebrow">BOOK</p>
     <h2>GRAB A STATION</h2>
-    <p>Round up a group and pick your hours. <span id="rateBook">$20</span>/hour, seats 1-6. Parties welcome.</p>
+    <p>Round up a group and pick your hours. Stations from <span id="rateBook">$10</span>/hour, seats 1-6. Parties welcome.</p>
     <p class="coin" aria-hidden="true">&#9679;</p>
     <p style="margin-top:1rem">
       <!-- ponytail: v1 booking = phone / Instagram DM, not a custom reservation system.
@@ -584,6 +691,7 @@
       <a href="https://www.yelp.com/biz/games-and-grub-pensacola" target="_blank" rel="noopener">YELP</a>
     </p>
     <p style="margin-top:1rem" id="footAddr">1000 Gulf Beach Hwy, Navy Point, Pensacola, FL &middot; (850) 287-9430</p>
+    <p style="margin-top:.4rem"><a class="email" href="mailto:gamesandgrub850@gmail.com">gamesandgrub850@gmail.com</a></p>
     <p style="margin-top:.4rem">&copy; Games and Grub, Pensacola. <!-- TODO: real domain, see BRIEF.md --></p>
   </div>
 </footer>
@@ -635,6 +743,7 @@
       const fa = document.getElementById('footAddr');
       if (fa) fa.innerHTML = esc(s.addressLine1) + ', ' + esc(s.addressLine2) + ' &middot; ' + esc(s.phone);
     }
+    if (s.email) document.querySelectorAll('a.email').forEach((a) => { a.textContent = s.email; a.href = 'mailto:' + s.email; });
     if (s.rate) ['rateHud', 'ratePlay', 'rateBook'].forEach((id) => { const e = document.getElementById(id); if (e) e.textContent = s.rate; });
   }
 
@@ -652,6 +761,7 @@
       openingHoursSpecification: spec,
     };
     if (s.phone) j.telephone = s.phone;
+    if (s.email) j.email = s.email;
     ld.textContent = JSON.stringify(j);
   }
   function renderHours(hours) {
@@ -681,6 +791,12 @@
       '<div class="pkg ' + esc(p.color) + ' reveal"><div class="head"><b>' + esc(p.name) + '</b>' +
       (p.price ? '<span class="pr">' + esc(p.price) + '</span>' : '') +
       '<span class="ppl">' + esc(p.people) + '</span></div><ul>' + p.items.map((i) => '<li>' + esc(i) + '</li>').join('') + '</ul></div>').join('');
+  }
+  // Stations and events share the specials card look: label, gold line, description.
+  function renderCards(id, list, label, value) {
+    if (!list || !list.length) { document.getElementById(id).innerHTML = baked[id]; return; }
+    document.getElementById(id).innerHTML = list.map((c) =>
+      '<li class="day reveal"><span class="d">' + esc(c[label]) + '</span><span class="pr">' + esc(c[value]) + '</span><p>' + esc(c.desc) + '</p></li>').join('');
   }
   function renderMenu(cats, foot) {
     document.getElementById('cats').innerHTML = cats.map((c) => {
@@ -724,7 +840,7 @@
   }
   // Skeletons while content loads. The baked HTML is the static fallback: we stash it,
   // swap in skeletons, and only restore it if every fetch fails.
-  const SKEL_IDS = ['heroPlace', 'heroTag', 'hours', 'daysList', 'pkgNote', 'pkgs', 'cats'];
+  const SKEL_IDS = ['heroPlace', 'heroTag', 'hours', 'daysList', 'stations', 'events-list', 'pkgNote', 'pkgs', 'cats'];
   const baked = {};
   const repeat = (n, html) => Array(n).fill(html).join('');
 
@@ -740,9 +856,10 @@
     // baked hours is one "call us" row; the live table is always 7 rows, so skeleton 7 to match height.
     const h = document.getElementById('hours');
     if (h) { baked['hours'] = h.innerHTML; h.innerHTML = repeat(7, '<tr><td><span class="skel-bar">Wednesday</span></td><td style="text-align:right"><span class="skel-bar">11:00 am &ndash; 10:00 pm</span></td></tr>'); }
-    ['daysList', 'pkgNote', 'pkgs', 'cats'].forEach(maskSkeleton);
+    const LISTS = ['daysList', 'stations', 'events-list', 'pkgNote', 'pkgs', 'cats'];
+    LISTS.forEach(maskSkeleton);
     // skeletons must be visible even though baked cards carry .reveal (opacity:0)
-    ['daysList', 'pkgNote', 'pkgs', 'cats'].forEach((id) => {
+    LISTS.forEach((id) => {
       const c = document.getElementById(id); if (!c) return;
       c.classList.add('in');
       c.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
@@ -754,15 +871,20 @@
 
   (async function load() {
     showSkeletons();
-    let data = null;
-    if (SANITY.projectId) { try { data = await fetchSanity(); } catch (e) { console.warn('Sanity unavailable, using data.json', e); } }
-    if (!data) { try { data = await (await fetch('data.json')).json(); } catch (e) { console.warn('data.json unavailable', e); } }
+    // data.json fills any field Sanity doesn't have yet (e.g. new sections before the owners publish them).
+    const [cms, local] = await Promise.all([
+      SANITY.projectId && !location.search.includes('local') ? fetchSanity().catch((e) => { console.warn('Sanity unavailable, using data.json', e); return null; }) : null,
+      fetch('data.json').then((r) => r.json()).catch((e) => { console.warn('data.json unavailable', e); return null; }),
+    ]);
+    const data = (cms || local) ? { ...local, ...cms, site: { ...(local && local.site), ...(cms && cms.site) } } : null;
     let sched = null;  // no schedule -> badge shows "CALL FOR HOURS", never stale times
     if (data) {
       try {
         renderSite(data.site);
         sched = renderHours(data.hours);
         renderSpecials(data.specials, data.familyNote);
+        renderCards('stations', data.stations, 'name', 'price');
+        renderCards('events-list', data.events, 'when', 'name');
         renderPackages(data.packagesNote, data.packages);
         renderMenu(data.menu, data.menuFoot);
         updateSEO(data);

@@ -15,7 +15,8 @@ export default defineType({
         { name: 'addressLine1', title: 'Street address', type: 'string' },
         { name: 'addressLine2', title: 'City line (e.g. Navy Point, Pensacola, FL)', type: 'string' },
         { name: 'phone', title: 'Phone (e.g. (850) 287-9430)', type: 'string' },
-        { name: 'rate', title: 'Gaming rate (e.g. $20)', type: 'string' },
+        { name: 'rate', title: 'Lowest gaming rate, shown as "from $X / hour" (e.g. $10)', type: 'string' },
+        { name: 'email', title: 'Email', type: 'string' },
       ],
     }),
     defineField({
@@ -41,6 +42,30 @@ export default defineType({
           { name: 'text', title: 'Special', type: 'text', rows: 2 },
         ],
         preview: { select: { title: 'code', subtitle: 'text' } },
+      })],
+    }),
+    defineField({
+      name: 'stations', title: 'Gaming Stations + Prices', type: 'array',
+      of: [defineArrayMember({
+        type: 'object',
+        fields: [
+          { name: 'name', title: 'Name (e.g. PC STATION)', type: 'string' },
+          { name: 'price', title: 'Price (e.g. $10/hr)', type: 'string' },
+          { name: 'desc', title: 'Description', type: 'string' },
+        ],
+        preview: { select: { title: 'name', subtitle: 'price' } },
+      })],
+    }),
+    defineField({
+      name: 'events', title: 'Community Events', type: 'array',
+      of: [defineArrayMember({
+        type: 'object',
+        fields: [
+          { name: 'when', title: 'When (e.g. FRI 8PM)', type: 'string' },
+          { name: 'name', title: 'Name', type: 'string' },
+          { name: 'desc', title: 'Description', type: 'string' },
+        ],
+        preview: { select: { title: 'name', subtitle: 'when' } },
       })],
     }),
     defineField({ name: 'familyNote', title: 'Family note (banner under specials)', type: 'string' }),
