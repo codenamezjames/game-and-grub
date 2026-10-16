@@ -5,7 +5,8 @@ import { readFileSync } from 'node:fs'
 import { getCliClient } from 'sanity/cli'
 
 const client = getCliClient({ apiVersion: '2021-10-21' })
-const data = JSON.parse(readFileSync(new URL('../../data.json', import.meta.url), 'utf8'))
+async function main() {
+const data = JSON.parse(readFileSync('../data.json', 'utf8'))  // run from studio/
 const doc = await client.fetch('*[_type=="siteContent"][0]{_id, "titles": menu[].title}')
 if (!doc) throw new Error('no siteContent document found')
 
@@ -15,7 +16,6 @@ let patch = client.patch(doc._id).set({
   stations: data.stations,
   events: data.events,
   menuFoot: data.menuFoot,
-  'menu[].items[name=="Pika! Pika! Cheese"].desc': "Grilled cheese with the face of everyone's favorite yellow buddy.",
 })
 if (!doc.titles.includes('SIDE MISSIONS')) {
   const newCats = data.menu.filter((c) => c.title === 'SIDE MISSIONS' || c.title === 'MAIN QUESTS')
@@ -23,3 +23,5 @@ if (!doc.titles.includes('SIDE MISSIONS')) {
 }
 await patch.commit({ autoGenerateArrayKeys: true })
 console.log('Sanity updated:', doc._id)
+}
+main().catch((e) => { console.error(e); process.exit(1) })
